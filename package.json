@@ -19,6 +19,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.4",
     "nodemon": "^2.0.22",
+    "path": "^0.12.7",
     "react-hook-form": "^7.43.9",
     "react-router": "^6.10.0"
   }

@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
+const path = require("path");
 // Import routes
 const authRoutes = require('./routes/auth');
 const jobRoutes = require('./routes/job');
@@ -32,9 +32,16 @@ mongoose.connect('mongodb://localhost:27017/job_location', { useNewUrlParser: tr
 // Register routes
 app.use('/api/auth', authRoutes);
 app.use('/api/job', jobRoutes);
-app.get("/", async(req, res)=>{
-    res.status(200).json("Server is up and running")
-})
+// app.get("/", async(req, res)=>{
+//     res.status(200).json("Server is up and running")
+// })
+
+
+
+app.get("/", (req, res) => {
+app.use(express.static(path.resolve(__dirname, "dist")));
+res.sendFile(path.resolve(__dirname, "dist", "index.html"));
+});
 // Error handler middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
