@@ -1,4 +1,5 @@
 // Import required packages
+require("dotenv").config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -21,7 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Connect to MongoDB using Mongoose
-mongoose.connect('mongodb://localhost:27017/job_location', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(`${process.env.MONGODB_URL}/job_location`, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
   })
